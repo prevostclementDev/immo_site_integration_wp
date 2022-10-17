@@ -1,0 +1,64 @@
+#your_teams {
+
+    padding: 80px 120px;
+
+    @media screen and (max-width : 840px) {
+            
+        padding: 40px 30px;
+
+    }
+
+    .container_team {
+
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media screen and (max-width : 934px) {
+            
+            flex-direction: column;
+
+        }
+
+        .member {
+
+            margin: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .member_img {
+
+                width: 300px;
+                height: 300px;
+                object-fit: cover;
+
+                @media screen and (max-width : 1200px) {
+            
+                    width: 200px;
+                    height: 200px;
+
+                }
+
+            }
+
+            h3  {
+
+                margin-top: 10px;
+                @include title_style( clamp(16px , 1.5vw , 20px ) );
+                
+            }
+
+            p {
+
+                @include text_style( clamp(14px , 1.5vw , 16px ) , 400 , $c-white );
+
+            }
+
+        }
+
+    }
+
+}

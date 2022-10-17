@@ -1,0 +1,54 @@
+#statistique {
+
+    padding: 50px 0;
+    background-color: $c-white;
+
+    @media screen and (max-width : 712px) {
+            
+        padding: 25px 0;
+
+    }
+
+    .stats_list {
+
+        @include centerFlex;
+
+        @media screen and (max-width : 712px) {
+            
+            flex-direction: column;
+
+        }
+
+        li {
+
+            margin: 0 70px;
+
+            @media screen and (max-width : 950px) {
+                
+                margin: 0 40px;
+
+                @media screen and (max-width : 712px) {
+            
+                    margin: 20px 0;
+        
+                }
+
+            }
+
+            p {
+
+                @include text_style ( clamp( 16px , 1.2vw , 24px ) , 300 , $c-main );
+
+                span {
+
+                    @include title_style ( clamp( 24px , 2.4vw , 48px ) );
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

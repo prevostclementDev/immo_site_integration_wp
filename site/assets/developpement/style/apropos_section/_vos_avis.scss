@@ -1,0 +1,43 @@
+#vos_avis {
+
+    color: $c-main;
+    background-color: $c-white;
+
+    padding: 50px 0;
+    
+    text-align: center;
+
+    h2 {
+
+        @include title_style( clamp(30px , 3vw , 40px ) );
+
+        margin-bottom: 50px;
+
+    }
+
+
+    .all_avis {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        margin: 0 auto;
+
+        @media screen and (max-width : 1070px) {
+
+            flex-direction: column;
+
+        }
+
+        .avis {
+
+            background-color: $c-main;
+            width: calc(100% / 3 - 60px);
+            height: 200px;
+
+        }
+
+    }
+
+}

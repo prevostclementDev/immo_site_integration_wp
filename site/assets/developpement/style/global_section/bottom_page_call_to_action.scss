@@ -1,0 +1,43 @@
+#bottom_page_call_to_action {
+
+    padding: 90px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .title_superpose {
+
+        margin-bottom: 40px;
+        position: relative;
+        height: fit-content;
+    
+        p {
+    
+          @include title_style( clamp(24px , 2.4vw , 48px ) );
+          color: $c-white;
+          position: relative;
+          position: absolute;
+    
+        }
+    
+        h2 {
+    
+            display: block;
+            position: relative;
+            @include title_style( clamp(35px , 4vw , 96px ) );
+            color: $c-opacity-text;
+            z-index: -1;
+            white-space: nowrap;
+    
+        }
+
+    }
+
+    a {
+
+        @include call_to_action;
+
+    }
+
+}

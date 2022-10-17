@@ -1,0 +1,23 @@
+#text_accroch_fullWidht {
+    
+    padding: 80px 120px;
+
+    @media screen and (max-width : 840px) {
+            
+        padding: 40px 30px;
+
+    }
+
+    & > p {
+
+        line-height: 45px;
+
+        @media screen and (max-width : 840px) {
+            
+            line-height: 20px;
+
+        }
+
+    }
+
+}
