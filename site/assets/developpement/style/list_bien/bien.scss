@@ -1,0 +1,90 @@
+.bien {
+
+    display: block;
+    position: relative;
+    min-height: 60vh;
+    width: calc(100% / 2 - 20px);
+    overflow: hidden;
+    color: $c-white;
+    margin: 20px 0;
+    min-width: 370px;
+
+    
+    @media screen and (max-width : 1024px) {
+            
+        .filter_bg {
+            
+            opacity: 0;
+
+        }
+
+        @media screen and (max-width : 450px) {
+            
+            width: 90%;
+            min-width: auto;
+    
+        }
+
+    }
+
+
+    .background_img {
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
+
+    }
+
+    .content {
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px 20px;
+
+        background: rgba(26, 29, 31, 0.8);
+        box-shadow: 0px -4px 4px rgba(26, 29, 31, 0.4);
+
+        transition: ease-in-out transform 0.35s;
+
+        transform: translateY(100%);
+
+        @media screen and (max-width : 1024px) {
+            
+            transform: translateY(0);
+
+        }
+
+        h2 {
+
+            @include title_style ( clamp( 18px , 2vw , 24px ) );
+            margin-bottom: 10px;
+
+        }
+
+        p {
+
+            @include text_style ( clamp( 12px , 1vw , 16px ) , 300 , $c-white );
+
+        }
+
+    }
+
+    &:hover {
+
+        .content {
+        
+            transform: translateY(0);
+            
+        }
+
+    }
+
+}
