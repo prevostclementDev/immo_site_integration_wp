@@ -9,6 +9,7 @@
     margin: 20px 0;
     min-width: 370px;
 
+
     
     @media screen and (max-width : 1024px) {
             
@@ -83,6 +84,31 @@
         
             transform: translateY(0);
             
+        }
+
+    }
+
+    &.type_article {
+
+        color: $c-main;
+
+        .content {
+
+            transform: translateY(0);
+            background-color: $c-white;
+
+            p {
+
+                color: $c-main;
+                
+            }
+
+        }
+
+        .filter_bg {
+
+            opacity: 0;
+
         }
 
     }
