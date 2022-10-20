@@ -1,0 +1,110 @@
+#carousel_first_view {
+    
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    margin: 30px 0;
+    
+    @media screen and (max-width : 1024px) {
+        
+        height: 80vh;
+
+    }
+
+    &:hover {
+
+        .filter_bg {
+
+            opacity: 1;
+
+        }
+
+    }
+
+    .carousel_image {
+
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+        display: flex;
+        scroll-behavior: smooth;
+
+        img {
+
+            width: 100vw;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+
+        }
+
+    }
+
+    .change__mage_carousel {
+
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+        z-index: 2;
+        cursor: pointer;
+        transition: transform 0.35s ease-in-out;
+
+        &:hover {
+
+            transform: translateY(-50%) scale(1.1);
+
+        }
+
+    }
+
+    .info_bien {
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: $c-main;
+
+        ul {
+
+            li {
+
+                width: fit-content;
+                background-color: $c-white;
+                margin: 10px 0;
+                @include centerFlex;
+                justify-content: space-between;
+                padding: 15px;
+
+                span {
+
+                    &.data {
+
+                        @include title_style( clamp(20px , 2vw , 40px ) );
+
+                    }
+
+                    &.data_info {
+
+                        @include title_style( clamp(16px , 1.4vw , 20px ) );
+
+                    }
+
+                }
+
+                img {
+
+                    margin: 0 10px;
+                    width: 50px;
+                    height: 50px;
+                    object-fit: contain;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

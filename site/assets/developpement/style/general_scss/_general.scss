@@ -154,6 +154,17 @@
                 width: 45vw;
                 height: 100%;
                 background-color: $c-white;
+                
+                &.adresse {
+
+                    h2 {
+
+                        @include title_style( clamp(18px , 2vw , 26px ) );
+                        margin: 0 20px;
+
+                    }
+
+                }
 
                 @media screen and (max-width : 1200px) {
                     
