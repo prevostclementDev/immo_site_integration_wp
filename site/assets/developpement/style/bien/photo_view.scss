@@ -1,0 +1,110 @@
+#photo_view {
+    
+    padding: 100px 0;
+    
+    @media screen and (max-width : 1024px) {
+        
+        padding: 40px 0;
+
+    }
+
+    .img {
+
+        @include centerFlex;
+        justify-content: flex-end;
+        margin: 100px 0;
+        
+        &.left  {
+
+            justify-content: flex-start;
+
+            .contains_all {
+
+                flex-direction: row-reverse;
+
+                .content {
+
+                    transform: translateX(40px);
+
+                }
+
+                .img_content {
+
+                    background: rgb(255,255,255);
+                    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 60%);
+    
+                    img {
+    
+                        transform: translateX(40px);
+    
+                    }
+    
+                }
+
+            }
+
+        }
+
+        .contains_all {
+
+            height: 80vh;
+
+            @media screen and (max-width: 768px) {
+
+                height: 50vh;
+                
+            }
+
+            @include centerFlex;
+
+            .content {
+
+                transform: translateX(-40px);
+                @include centerFlex;
+                justify-content: flex-end;
+                align-items: flex-start;
+                height: 90%;
+                margin: 0 20px;
+                @include title_style( clamp(24px , 3vw , 40px ) );
+                color: #383D40;
+
+                @media screen and (max-width: 768px) {
+
+                    display: none;
+                    
+                }
+
+            }
+
+            .img_content {
+
+                width: 50vw;
+                height: 100%;   
+                background: rgb(255,255,255);
+                background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%);
+
+                @include centerFlex;
+                justify-content: flex-start;
+
+                @media screen and (max-width: 768px) {
+
+                    width: 80vw;
+                    
+                }
+
+                img {
+
+                    width: 100%;
+                    height: 90%;
+                    object-fit: cover;
+                    transform: translateX(-40px);
+
+                }
+
+            }
+            
+        }
+        
+    }
+
+}
