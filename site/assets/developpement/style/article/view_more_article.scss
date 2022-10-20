@@ -1,0 +1,40 @@
+#view_more_article {
+
+    padding: 130px;
+
+    @media screen and (max-width: 1024px) {
+
+        padding: 50px 20px;
+        
+    }
+
+    .articles_view {
+
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 792px) {
+
+            flex-direction: column;
+            align-items: flex-start;
+            
+        }
+
+        .bien {
+
+            width: calc(100% / 3 - 20px);
+
+            @media screen and (max-width: 792px) {
+
+                width: 100%;
+                
+            }
+
+        }
+
+    }
+
+}

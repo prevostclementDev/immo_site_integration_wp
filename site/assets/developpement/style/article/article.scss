@@ -1,0 +1,38 @@
+#article {
+
+    padding: 130px;
+
+    @media screen and (max-width: 1024px) {
+
+        padding: 50px 20px;
+        
+    }
+
+    a , .text {
+
+        @include text_style( clamp(14px , 1.5vw , 18px ) , 300 , $c-white );
+        line-height: 50px;
+
+        @media screen and (max-width: 1024px) {
+
+            line-height: 25px;
+            
+        }
+
+    }
+
+    .text {
+
+        margin: 50px 0;
+        
+    }
+
+    a {
+
+        display: inline-block;
+        color: $c-white;
+        text-decoration: underline;
+
+    }
+
+}
