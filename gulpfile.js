@@ -23,17 +23,17 @@ const imagemin = require('gulp-imagemin');
 /* CHEMIN FICHIER */
 const chemin = {
     styles : {
-        Inspectdev : 'site/assets/developpement/**/*.scss',
-        dev : 'site/style.scss',
-        prod : 'site/assets/production/style/'
+        Inspectdev : 'assets/developpement/**/*.scss',
+        dev : 'style.scss',
+        prod : 'assets/production/style/'
     },
     script: {
-        dev : 'site/assets/developpement/**/*.js',
-        prod : 'site/assets/production/'
+        dev : 'assets/developpement/**/*.js',
+        prod : 'assets/production/'
     },
     images : {
-        dev : 'site/assets/developpement/img/*',
-        prod : 'site/assets/production/img/'
+        dev : 'assets/developpement/img/*',
+        prod : 'assets/production/img/'
     }
 }
 
