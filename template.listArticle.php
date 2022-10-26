@@ -1,10 +1,22 @@
 <?php
-/*
-Template Name: Template list d'article
-Template Post Type: page
-*/    
+    /*
+    Template Name: Template list d'article
+    Template Post Type: page
+    */    
 
-get_header(); 
+    get_header(); 
+
+    $type_article = get_field('article_type');
+
+    if ( $type_article ) {
+
+        $slug = $type_article[0]->slug;
+
+    } else {
+
+        $slug = "";
+
+    }
 
 ?>
 
@@ -12,53 +24,63 @@ get_header();
 
         <div class="container_bien">
 
-            <a href="" class="bien type_article">
+        <?php 
 
-                    <img src="./assets/production/img/pexels-chris-goodwin-32870.jpg" alt="" class="background_img">
-                    <div class="filter_bg"></div>
+            $articles = new WP_Query(array(
+                'post_type' => 'post',
+                'posts_per_page' => -1,
+                'category_name' => $slug,
+            ));
 
-                    <div class="content">
+            if ( $articles->have_posts() ) {
 
-                        <h2>BORDE DE MER LUXURIANTE</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                        </p>
+                while ( $articles->have_posts() ) {
 
-                    </div>
+                    $articles->the_post();
 
-            </a>
+                    $image_article = get_field('image_du_header', get_the_ID());
+                
+                    if ( $image_article ) {
+    
+                        $image_article_link = $image_article["url"];
+    
+                    } else {
+    
+                        $image_article_link = get_template_directory_uri()."/assets/production/img/pexels-alex-staudinger-1732414.jpg";
+    
+                    }
 
-            <a href="" class="bien type_article">
+                    ?>
 
-                <img src="./assets/production/img/pexels-pixabay-280229.jpg" alt="" class="background_img">
-                <div class="filter_bg"></div>
+                    <a href="<?= get_page_uri(get_the_ID()) ?>" class="bien type_article">
 
-                <div class="content">
+                        <img src="<?= $image_article_link  ?>" alt="" class="background_img">
+                        <div class="filter_bg"></div>
 
-                    <h2>BORDE DE MER LUXURIANTE</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                    </p>
+                        <div class="content">
 
-                </div>
+                            <h2><?php the_title(); ?></h2>
+                            <p>
+                                <?php the_excerpt(); ?>
+                            </p>
 
-            </a>
+                        </div>
 
-            <a href="" class="bien type_article">
+                    </a>
 
-                <img src="./assets/production/img/pexels-pixabay-259588.jpg" alt="" class="background_img">
-                <div class="filter_bg"></div>
+                    <?php
 
-                <div class="content">
+                }
 
-                    <h2>BORDE DE MER LUXURIANTE</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                    </p>
+            } else {
 
-                </div>
+                echo "<h2> Aucun articles :/</h2>";
 
-            </a>
+            }
+
+            wp_reset_postdata();
+
+        ?>
 
         </div>
 
@@ -84,6 +106,6 @@ get_header();
 
 <?php
 
-get_footer();
+    get_footer();
 
 ?>

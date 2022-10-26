@@ -33,7 +33,7 @@ get_header();
                             
             if ( !$title ) {
 
-                $title = "";
+                $title = get_the_title($page->ID);
 
             }
 
