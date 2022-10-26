@@ -28,45 +28,13 @@
 
                 <section id="nav_content">
 
-                    <ul class="list_link_nav">
-
-                        <li>
-                            <a href="">
-                                <p class="p_nav">
-                                    <span class="front_text"><span class="openAnimate">Nos biens à la ventes.</span></span>
-                                    <span class="back_text"><span class="openAnimate">Nos biens à la ventes</span></span>
-                                </p>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="">
-                                <p class="p_nav">
-                                    <span class="front_text"><span class="openAnimate">NOS BIENS à la LOCATIONS.</span></span>
-                                    <span class="back_text"><span class="openAnimate">NOS BIENS à la LOCATIONS</span></span>
-                                </p>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="">
-                                <p class="p_nav">
-                                    <span class="front_text"><span class="openAnimate">nos actualités</span></span>
-                                    <span class="back_text"><span class="openAnimate">nos actualités</span></span>
-                                </p>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="">
-                                <p class="p_nav">
-                                    <span class="front_text"><span class="openAnimate">à propos</span></span>
-                                    <span class="back_text"><span class="openAnimate">à propos</span></span>
-                                </p>
-                            </a>
-                        </li>
-    
-                    </ul>
+                    <?php wp_nav_menu( 
+                        array( 
+                            'theme_location' => 'menu_header',
+                            'link_before' => '<p class="p_nav">',
+                            'link_after' => '</p>',
+                        )); 
+                    ?>
     
                     <div class="closeNavigation">
                         <img src="<?= get_template_directory_uri();?>/assets/production/img/close-nav.png" alt="">
@@ -120,7 +88,7 @@
     
                     <div class="header_top">
     
-                        <a class="header_name" href="index.html">EDMON.IMMO</a>
+                        <a class="header_name" href="<?= get_home_url(); ?>">EDMON.IMMO</a>
     
                         <div class="header_burger">
     

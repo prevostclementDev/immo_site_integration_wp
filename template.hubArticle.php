@@ -6,25 +6,54 @@ Template Post Type: page
 
 get_header(); 
 
+    $pages_articles = get_field('liste_darticle');
+
 ?>
 
     <section id="hub_content">
 
-        <a href="" class="hub">
-            <img src="assets/production/img/pexels-eneida-nieves-803975.jpg" alt="" class="background_image">
-            <div class="filter_bg"></div>
-            <div class="content">
-                <h2>Locales</h2>
-            </div>
-        </a>
+        <?php 
+        
+        foreach ( $pages_articles as $page ) {
 
-        <a href="" class="hub">
-            <img src="assets/production/img/pexels-william-fortunato-6140676.jpg" alt="" class="background_image">
-            <div class="filter_bg"></div>
-            <div class="content">
-                <h2>L'agence</h2>
-            </div>
-        </a>
+            $image_header_page = get_field('image_du_header', $page->ID);
+                
+            if ( $image_header_page ) {
+
+                $image_header_link_page = $image_header_page["url"];
+
+            } else {
+
+                $image_header_link_page = $image_header_link;
+
+            }
+
+            
+            $title = get_field('titre_de_la_page', $page->ID);
+                            
+            if ( !$title ) {
+
+                $title = "";
+
+            }
+
+            ?>
+
+            <a href="<?= get_page_uri($page->ID) ?>" class="hub">
+                <img src="<?= $image_header_link_page ?>" alt="" class="background_image">
+                <div class="filter_bg"></div>
+                <div class="content">
+                    <h2><?= $title ?></h2>
+                </div>
+            </a>
+
+            <?php
+
+        }
+
+        ?>
+
+
 
     </section>
 
