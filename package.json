@@ -1,5 +1,5 @@
 {
-  "name": "my_gulp_package",
+  "name": "@immo_site_integration_wp/my_gulp_package",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
