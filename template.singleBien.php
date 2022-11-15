@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Template single bien
-Template Post Type: page
+Template Post Type: sell,loc
 */
 
     get_header(); 
@@ -24,7 +24,7 @@ Template Post Type: page
         </div>
 
         <p class="text_basic">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is, qui nobis quasi oraculum ediderit nihil post mortem ad nos pertinere? Cur tantas regiones barbarorum pedibus obiit, tot maria transmisit? Ut enim consuetudo loquitur, id solum dicitur honestum, quod est populari fama gloriosum. Scientiam pollicentur, quam non erat mirum sapientiae cupido patria esse cariorem. Et harum quidem rerum facilis est et expedita distinctio. 
+            <?= $value_bien['desc_sell'] ?>
         </p>
 
     </section>
@@ -32,12 +32,20 @@ Template Post Type: page
     <section id="carousel_first_view">
 
         <div class="carousel_image">
-            <img src="./assets/production/img/pexels-pixabay-534151.jpg" alt="">
-            <img src="./assets/production/img/pexels-chris-goodwin-32870.jpg" alt="">
-            <img src="./assets/production/img/pexels-expect-best-323780.jpg" alt="">
+            <?php
+            
+                foreach ($value_bien['imgArray'] as $img) {
+
+                    ?>
+                        <img src="<?= $img ?>" alt="">
+                    <?php
+
+                }
+
+            ?>
         </div>
 
-        <img src="./assets/production/img/arrow.png" alt="" class="change__mage_carousel">
+        <img src="<?= get_template_directory_uri(); ?>/assets/production/img/arrow.png" alt="" class="change__mage_carousel">
 
         <div class="filter_bg"></div>
 
@@ -45,9 +53,9 @@ Template Post Type: page
 
             <ul>
 
-                <li><span class="data">2</span><img src="./assets/production/img/bxs_bath.png" alt=""></li>
-                <li><span class="data">5</span><img src="./assets/production/img/ic_outline-bed.png" alt=""></li>
-                <li><span class="data">100 <span class="data_info">m2</span> </span><img src="./assets/production/img/bx_area.png" alt=""></li>
+                <li><span class="data"><?= $value_bien['nb_bath'] ?></span><img src="<?= get_template_directory_uri(); ?>/assets/production/img/bxs_bath.png" alt=""></li>
+                <li><span class="data"><?= $value_bien['nb_bedroom'] ?></span><img src="<?= get_template_directory_uri(); ?>/assets/production/img/ic_outline-bed.png" alt=""></li>
+                <li><span class="data"><?= $value_bien['surface'] ?> <span class="data_info">m2</span> </span><img src="<?= get_template_directory_uri(); ?>/assets/production/img/bx_area.png" alt=""></li>
 
             </ul>
 
@@ -61,8 +69,8 @@ Template Post Type: page
 
             <div class="contains_all">
 
-                <div class="content"><p>1. VUE DE MER</p></div>
-                <div class="img_content"><img src="./assets/production/img/pexels-ben-mack-6775268.jpg" alt=""></div>
+                <div class="content"><p>1. <?= $value_bien['prestige_1']['title'] ?></p></div>
+                <div class="img_content"><img src="<?= $value_bien['prestige_1']['img'] ?>" alt=""></div>
 
             </div>
 
@@ -72,12 +80,30 @@ Template Post Type: page
 
             <div class="contains_all">
 
-                <div class="content"><p>2. SALON INTERIEUR</p></div>
-                <div class="img_content"><img src="./assets/production/img/pexels-vecislavas-popa-1571463.jpg" alt=""></div>
+                <div class="content"><p>2. <?= $value_bien['prestige_2']['title'] ?></p></div>
+                <div class="img_content"><img src="<?= $value_bien['prestige_2']['img'] ?>" alt=""></div>
 
             </div>
 
         </section>
+
+    </section>
+
+    <section id="bottom_page_call_to_action">
+
+        <div class="title_superpose">
+
+            <h2>
+                voulez vous reserver une visite ?
+            </h2>
+
+            <p>
+                voulez vous reserver une visite ?
+            </p>
+
+        </div>
+
+        <a href="" id="reservation" data_bien="20">RESERVER</a>
 
     </section>
     
@@ -107,6 +133,9 @@ Template Post Type: page
         </form>
 
     </div>
+
+    <script src="<?= get_template_directory_uri();?>/assets/production/js/carousel-min.js"></script>
+    <script src="<?= get_template_directory_uri();?>/assets/production/js/reservation_pop_up-min.js"></script>
 
     <?php
 

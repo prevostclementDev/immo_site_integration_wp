@@ -1,10 +1,21 @@
 <?php
 
+    global $this_page_id;
+
     $this_page_id = $post->ID;
 
     if ( is_front_page() ) {
 
         $this_page_id = 38;
+
+    }
+
+    $page_type = get_post_type();
+
+    if ( $page_type == "sell" || $page_type == "loc" ) {
+
+        global $value_bien;
+        $value_bien = unserialize(get_post_meta($this_page_id,'_info_sell',true));
 
     }
 
@@ -21,7 +32,7 @@
     <title>Projet</title>
 </head>
     <body>
-        
+    
         <main>
 
             <nav id="navigation">
@@ -49,7 +60,9 @@
             $size_header = get_field( "taille_du_header" , $this_page_id );
             $color_logo = get_field( "couleur_du_logo" , $this_page_id );
 
-            if ( !$size_header ) {
+            $size_header = "notFull_height_header";
+
+            if ( !$size_header and $page_type != "sell" and $page_type != "loc" ) {
 
                 $size_header = "full_height_header";
 
@@ -66,16 +79,17 @@
             <header id="header" class="<?= $size_header." ".$color_logo?>">
 
                 <?php 
-                
+
+                $image_header_link = get_template_directory_uri()."/assets/production/img/pexels-alex-staudinger-1732414.jpg";
                 $image_header = get_field('image_du_header', $this_page_id);
                 
                 if ( $image_header ) {
 
                     $image_header_link = $image_header["url"];
 
-                } else {
+                } else if ( $page_type == "sell" || $page_type == "loc" ) {
 
-                    $image_header_link = get_template_directory_uri()."/assets/production/img/pexels-alex-staudinger-1732414.jpg";
+                    $image_header_link = $value_bien['prestige_1']['img'];
 
                 }
 
@@ -108,11 +122,15 @@
 
                             $title = get_field('titre_de_la_page', $this_page_id);
                             
-                            if ( !$title ) {
+                            if ( $page_type == "sell" || $page_type == "loc" ) {
+
+                                $title = $value_bien['name_sell'];
+
+                            } else if ( $page_type == "sell" ) {
 
                                 $title = "";
 
-                            } 
+                            }
 
                             echo $title;
 
@@ -156,7 +174,17 @@
                             
                             <?php
 
-                        } 
+                        } else if ( $page_type == "sell" || $page_type == "loc" ) {
+
+                            ?>
+                            <div class="content_bottom adresse">
+    
+                                <h2><?php if( $value_bien['address_sell'] == false ) { echo "Pas d'adresse"; } else { echo $value_bien['address_sell'];}  ?></h2>
+
+                            </div>
+                            <?php
+
+                        }
 
                         ?>
     

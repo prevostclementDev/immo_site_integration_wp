@@ -6,60 +6,60 @@ Template Post Type: page
 
     get_header(); 
 
+    $type_list = get_field('type_list_bien', $this_page_id);
+
     ?>
-    
     
     <section id="list_bien">
 
         <div class="container_bien">
 
-            <a href="" class="bien">
+        <?php 
 
-                    <img src="<?= get_template_directory_uri();?>/assets/production/img/pexels-chris-goodwin-32870.jpg" alt="" class="background_img">
-                    <div class="filter_bg"></div>
+            $biens = new WP_Query(array(
+                'post_type' => $type_list,
+                'posts_per_page' => -1,
+            ));
 
-                    <div class="content">
+            if ( $biens->have_posts() ) {
 
-                        <h2>BORDE DE MER LUXURIANTE</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                        </p>
+                while ( $biens->have_posts() ) {
 
-                    </div>
+                    $biens->the_post();
 
-            </a>
+                    $val = unserialize(get_post_meta(get_the_ID(),'_info_sell',true));
 
-            <a href="" class="bien">
+                    ?>
 
-                <img src="<?= get_template_directory_uri();?>/assets/production/img/pexels-pixabay-280229.jpg" alt="" class="background_img">
-                <div class="filter_bg"></div>
+                    <a href="<?= the_permalink() ?>" class="bien">
 
-                <div class="content">
+                        <img src="<?= $val['prestige_1']['img'] ?>" alt="" class="background_img">
+                        <div class="filter_bg"></div>
 
-                    <h2>BORDE DE MER LUXURIANTE</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                    </p>
+                        <div class="content">
 
-                </div>
+                            <h2><?= $val['name_sell'] ?></h2>
+                            <p>
+                                <?= the_excerpt()?>
+                            </p>
 
-            </a>
+                        </div>
 
-            <a href="" class="bien">
+                    </a>
 
-                <img src="<?= get_template_directory_uri();?>/assets/production/img/pexels-pixabay-259588.jpg" alt="" class="background_img">
-                <div class="filter_bg"></div>
+                    <?php
 
-                <div class="content">
+                }
 
-                    <h2>BORDE DE MER LUXURIANTE</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                    </p>
+            } else {
 
-                </div>
+                echo "<h2> Aucun bien :/</h2>";
 
-            </a>
+            }
+
+            wp_reset_postdata();
+
+        ?>
 
         </div>
 
