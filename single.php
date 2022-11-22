@@ -9,11 +9,11 @@
         <div class="title_superpose">
 
             <h2>
-                L’agence RECRUTE
+                <?= the_title() ?>
             </h2>
 
             <p>
-                L’agence RECRUTE
+                <?= the_title() ?>
             </p>
 
         </div>
@@ -22,13 +22,7 @@
 
             <p>
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is, qui nobis quasi oraculum ediderit nihil post mortem ad nos pertinere? Cur tantas regiones barbarorum pedibus obiit, tot maria transmisit? Ut enim consuetudo loquitur, id solum dicitur honestum, quod est populari fama gloriosum. Scientiam pollicentur, quam non erat mirum sapientiae cupido patria esse cariorem. Et harum quidem rerum facilis est et expedita distinctio. 
-                <br><br>
-
-                <a href="">voir plus</a>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is, qui nobis quasi oraculum ediderit nihil post mortem ad nos pertinere? Cur tantas regiones barbarorum pedibus obiit, tot maria transmisit? Ut enim consuetudo loquitur, id solum dicitur honestum, quod est populari fama gloriosum. Scientiam pollicentur, quam non erat mirum sapientiae cupido patria esse cariorem. Et harum quidem rerum facilis est et expedita distinctio. 
-                <br>oraculum ediderit nihil post mortem ad nos pertinere? Cur tantas regiones barbarorum pedibus obiit, tot maria transmisit? Ut enim consuetudo loquitur, id solum dicitur honestum, quod est populari fama gloriosum. Scientiam pollicentur, quam non erat mirum sapientiae cupido patria esse cariorem. Et harum quidem rerum facilis est et expedita distinctio. 
+                <?= the_content() ?>
 
             </p>
 
@@ -52,53 +46,52 @@
 
         <div class="articles_view">
 
-            <a href="" class="bien type_article">
+        <?php 
 
-                <img src="./assets/production/img/pexels-chris-goodwin-32870.jpg" alt="" class="background_img">
-                <div class="filter_bg"></div>
+            $biens = new WP_Query(array(
+                'post_type' => 'post',
+                'posts_per_page' => 3,
+            ));
 
-                <div class="content">
+            if ( $biens->have_posts() ) {
 
-                    <h2>BORDE DE MER LUXURIANTE</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                    </p>
+                while ( $biens->have_posts() ) {
 
-                </div>
+                    $biens->the_post();
 
-            </a>
+                    $image_header = get_field('image_du_header', get_the_ID());
 
-            <a href="" class="bien type_article">
+                    ?>
+                    
+                    <a href="" class="bien type_article">
 
-                <img src="./assets/production/img/pexels-chris-goodwin-32870.jpg" alt="" class="background_img">
-                <div class="filter_bg"></div>
+                        <img src="<?= $image_header['url'] ?>" alt="" class="background_img">
+                        <div class="filter_bg"></div>
 
-                <div class="content">
+                        <div class="content">
 
-                    <h2>BORDE DE MER LUXURIANTE</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                    </p>
+                            <h2><?= the_title() ?></h2>
+                            <p>
+                                <?= the_excerpt() ?>
+                            </p>
 
-                </div>
+                        </div>
 
-            </a>
+                    </a>
 
-            <a href="" class="bien type_article">
+                    <?php
 
-                <img src="./assets/production/img/pexels-chris-goodwin-32870.jpg" alt="" class="background_img">
-                <div class="filter_bg"></div>
+                }
 
-                <div class="content">
+            } else {
 
-                    <h2>BORDE DE MER LUXURIANTE</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is
-                    </p>
+                echo "<h2> Aucun bien :/</h2>";
 
-                </div>
+            }
 
-            </a>
+            wp_reset_postdata();
+
+        ?>
 
         </div>
 

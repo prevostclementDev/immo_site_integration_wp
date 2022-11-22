@@ -66,5 +66,5 @@
     </main>
 
     <script src="<?= get_template_directory_uri();?>/assets/production/js/main-min.js"></script>
-    </body>
-</html>
+
+    <?php wp_footer(); ?>

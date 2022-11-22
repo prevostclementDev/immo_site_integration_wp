@@ -2,6 +2,9 @@
 
     get_header(); 
 
+    $introduction = get_field('texte_dintroduction',$this_page_id);
+    $equipe = get_field('equipe',$this_page_id);
+    
     ?>
     
     <section id="text_accroch_fullWidht">
@@ -18,8 +21,8 @@
 
         </div>
 
-        <p class="text_basic">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is, qui nobis quasi oraculum ediderit nihil post mortem ad nos pertinere? Cur tantas regiones barbarorum pedibus obiit, tot maria transmisit? Ut enim consuetudo loquitur, id solum dicitur honestum, quod est populari fama gloriosum. Scientiam pollicentur, quam non erat mirum sapientiae cupido patria esse cariorem. Et harum quidem rerum facilis est et expedita distinctio. 
+        <p class="text_basic">   
+                <?= $introduction ?>
         </p>
 
     </section>
@@ -40,31 +43,25 @@
 
         <div class="container_team">
 
-            <div class="member">
+            <?php
+            
+                foreach($equipe as $member) {
 
-                <img src="assets/production/img/pexels-george-milton-6954194.jpg" alt="" class="member_img">
-                <h3>Camillia</h3>
-                <p>Relation client</p>
+                    ?>
+                    
+                    <div class="member">
 
-            </div>
+                        <img src="<?= $member['portrait']['url'] ?>" alt="" class="member_img">
+                        <h3><?= $member['nom'] ?></h3>
+                        <p><?= $member['metier'] ?></p>
 
-            <div class="member">
+                    </div>
+                    
+                    <?php
 
-                <img src="assets/production/img/pexels-william-fortunato-6393007.jpg" alt="" class="member_img">
-                <h3>Jérome</h3>
-                <p>Strategie marketing</p>
+                }
 
-            </div>
-
-
-            <div class="member">
-
-                <img src="assets/production/img/pexels-andrea-piacquadio-3760263.jpg" alt="" class="member_img">
-                <h3>Marc</h3>
-                <p>Gérant communication</p>
-
-            </div>
-
+            ?>
 
         </div>
 

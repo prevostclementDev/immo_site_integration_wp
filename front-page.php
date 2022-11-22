@@ -2,13 +2,16 @@
 
     get_header(); 
 
+    $accroche_data = get_field('accroche',$this_page_id);
+    $statistiques = get_field('statistiques',$this_page_id);
+
     ?>
     
     <section id="nos_bien_de_luxe">
 
         <div class="leftPart">
 
-            <img src="<?= get_template_directory_uri();?>/assets/production/img/pexels-timur-saglambilek-87223.jpg" alt="" class="presentationImage">
+            <img src="<?= $accroche_data['image_accroche']['url'] ?>" alt="" class="presentationImage">
             <div class="filter_bg"></div>
 
         </div>
@@ -18,11 +21,11 @@
             <div class="title_superpose">
 
                 <h2>
-                    Nos biens de luxe
+                    <?= $accroche_data['titre_accroche'] ?>
                 </h2>
 
                 <p>
-                    Nos biens de luxe
+                    <?= $accroche_data['titre_accroche'] ?>
                 </p>
 
             </div>
@@ -30,11 +33,11 @@
 
             <p>
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen intellego quid velit. Quis tibi ergo istud dabit praeter Pyrrhonem, Aristonem eorumve similes, quos tu non probas? Beatum, inquit. Idque testamento cavebit is, qui nobis quasi oraculum ediderit nihil post mortem ad nos pertinere? Cur tantas regiones barbarorum pedibus obiit, tot maria 
+                <?= $accroche_data['texte_daccroche'] ?>
 
             </p>
 
-            <a href="index.html" class="button">NOS BIENS à la vente</a>
+            <a href="<?= get_permalink($accroche_data['lien_de_page']->ID) ?>" class="button"><?= $accroche_data['texte_du_lien'] ?></a>
 
         </div>
 
@@ -44,9 +47,9 @@
 
         <ul class="stats_list">
 
-            <li><p><span>+100</span>Clients satisfaits</p></li>
-            <li><p><span>+50</span>Biens en ventes</p></li>
-            <li><p><span>+20</span>Programmes neufs</p></li>
+            <li><p><span>+<?= $statistiques['clients_statisfaits'] ?></span>Clients satisfaits</p></li>
+            <li><p><span>+<?= $statistiques['biens_en_vents'] ?></span>Biens en ventes</p></li>
+            <li><p><span>+<?= $statistiques['programmes_neufs'] ?></span>Programmes neufs</p></li>
 
         </ul>
 
@@ -54,41 +57,77 @@
 
     <section id="lasted_bien">
 
-        <a href="" class="last_bien">
-            <img src="<?= get_template_directory_uri();?>/assets/production/img/pexels-max-vakhtbovych-6301168.jpg" alt="" class="img_mane_bien">
-            <div class="filter_bg"></div>
+        <?php 
 
-            <div class="content_bien">
+            $biens = new WP_Query(array(
+                'post_type' => 'sell',
+                'posts_per_page' => 3,
+            ));
 
-                <h3>nom du bien</h3>
+            if ( $biens->have_posts() ) {
 
-            </div>
+                while ( $biens->have_posts() ) {
 
-        </a>
+                    $biens->the_post();
+                    $bien = unserialize(get_post_meta(get_the_ID(),'_info_sell',true));
 
-        <a href="" class="last_bien">
-            <img src="<?= get_template_directory_uri();?>/assets/production/img/pexels-expect-best-323781.jpg" alt="" class="img_mane_bien">
-            <div class="filter_bg"></div>
+                    ?>
+                    <a href="" class="last_bien">
+                        <img src="<?= $bien['prestige_1']['img']?>" alt="" class="img_mane_bien">
+                        <div class="filter_bg"></div>
 
-            <div class="content_bien">
+                        <div class="content_bien">
 
-                <h3>nom du bien</h3>
+                            <h3><?= $bien['name_sell'] ?></h3>
 
-            </div>
+                        </div>
 
-        </a>
+                    </a>
+                    <?php
 
-        <a href="" class="last_bien">
-            <img src="<?= get_template_directory_uri();?>/assets/production/img/pexels-expect-best-323780.jpg" alt="" class="img_mane_bien">
-            <div class="filter_bg"></div>
+                }
 
-            <div class="content_bien">
+            }
+            
+            wp_reset_postdata();
 
-                <h3>nom du bien</h3>
+            if ( $biens->found_posts < 3 ) {
 
-            </div>
+                $locs = new WP_Query(array(
+                    'post_type' => 'loc',
+                    'posts_per_page' => 3 - $biens->found_posts,
+                ));
+    
+                if ( $locs->have_posts() ) {
+    
+                    while ( $locs->have_posts() ) {
+    
+                        $locs->the_post();
+                        $loc = unserialize(get_post_meta(get_the_ID(),'_info_sell',true));
+    
+                        ?>
+                        <a href="" class="last_bien">
+                            <img src="<?= $loc['prestige_1']['img']?>" alt="" class="img_mane_bien">
+                            <div class="filter_bg"></div>
+    
+                            <div class="content_bien">
+    
+                                <h3><?= $loc['name_sell'] ?></h3>
+    
+                            </div>
+    
+                        </a>
+                        <?php
+    
+                    }
+    
+                }
 
-        </a>
+                wp_reset_postdata();
+
+            }
+
+        ?>
 
     </section>
 
