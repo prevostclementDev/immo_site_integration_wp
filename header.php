@@ -51,14 +51,6 @@
             $size_header = get_field( "taille_du_header" , $this_page_id );
             $color_logo = get_field( "couleur_du_logo" , $this_page_id );
 
-            $size_header = "notFull_height_header";
-
-            if ( !$size_header and $page_type != "sell" and $page_type != "loc" ) {
-
-                $size_header = "full_height_header";
-
-            }
-
             if ( !$color_logo ) {
 
                 $color_logo = "";

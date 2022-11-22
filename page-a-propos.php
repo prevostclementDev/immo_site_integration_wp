@@ -67,19 +67,9 @@
 
     </section>
 
-    <section id="statistique">
+    <?php dynamic_sidebar( 'statistiques' ); ?>
 
-        <ul class="stats_list">
-
-            <li><p><span>+100</span>Clients satisfaits</p></li>
-            <li><p><span>+50</span>Biens en ventes</p></li>
-            <li><p><span>+20</span>Programmes neufs</p></li>
-
-        </ul>
-
-        </section>
-
-        <section id="vos_avis">
+<!--     <section id="vos_avis">
 
         <h2>Vos avis</h2>
 
@@ -91,27 +81,15 @@
 
         </div>
 
-    </section>
-
-    <section id="bottom_page_call_to_action">
-
-        <div class="title_superpose">
-
-            <h2>
-                BESOIN DE PLUS D’INFORMATION ?
-            </h2>
-
-            <p>
-                BESOIN DE PLUS D’INFORMATION ?
-            </p>
-
-        </div>
-
-        <a href="">PRENDRE CONTACT AVEC NOUS</a>
-
-    </section>
+    </section> -->
     
     <?php
+
+    get_template_part( 'templates_parts/bottom_cta' , 'botom_cta' , array(
+        'title' => 'BESOIN DE PLUS D’INFORMATION ?',
+        'link' => get_permalink(64),
+        'link_text' => 'PRENDRE CONTACT AVEC NOUS',
+    ));
 
     get_footer();
 

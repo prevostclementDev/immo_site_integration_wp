@@ -89,23 +89,17 @@ Template Post Type: sell,loc
 
     </section>
 
-    <section id="bottom_page_call_to_action">
+    <?php 
+    
+    get_template_part( 'templates_parts/bottom_cta' , 'botom_cta' , array(
+        'title' => 'voulez vous reserver une visite ?',
+        'link' => get_permalink(64),
+        'link_text' => 'RESERVER',
+        'id_btn' => 'reservations',
+        'id_bien' => 20,
+    ));
 
-        <div class="title_superpose">
-
-            <h2>
-                voulez vous reserver une visite ?
-            </h2>
-
-            <p>
-                voulez vous reserver une visite ?
-            </p>
-
-        </div>
-
-        <a href="" id="reservation" data_bien="20">RESERVER</a>
-
-    </section>
+    ?>
     
     <div id="pop_up_reservation">
 

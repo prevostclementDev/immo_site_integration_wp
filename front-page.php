@@ -43,17 +43,7 @@
 
     </section>
 
-    <section id="statistique">
-
-        <ul class="stats_list">
-
-            <li><p><span>+<?= $statistiques['clients_statisfaits'] ?></span>Clients satisfaits</p></li>
-            <li><p><span>+<?= $statistiques['biens_en_vents'] ?></span>Biens en ventes</p></li>
-            <li><p><span>+<?= $statistiques['programmes_neufs'] ?></span>Programmes neufs</p></li>
-
-        </ul>
-
-    </section>
+    <?php dynamic_sidebar( 'statistiques' ); ?>
 
     <section id="lasted_bien">
 

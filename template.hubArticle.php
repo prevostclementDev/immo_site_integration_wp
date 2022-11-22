@@ -77,6 +77,12 @@ get_header();
 
 <?php
 
+    get_template_part( 'templates_parts/bottom_cta' , 'botom_cta' , array(
+        'title' => 'Découvrir nos biens à l\'achats ?',
+        'link' => get_permalink(64),
+        'link_text' => 'Nos biens',
+    ));
+
     get_footer();
 
 ?>
