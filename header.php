@@ -6,7 +6,7 @@
 
     if ( is_front_page() ) {
 
-        $this_page_id = 38;
+        $this_page_id = 22;
 
     }
 

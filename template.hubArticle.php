@@ -57,29 +57,11 @@ get_header();
 
     </section>
 
-    <section id="bottom_page_call_to_action">
-
-        <div class="title_superpose">
-
-            <h2>
-                DECOUVRIR NOS BIENS à l’ACHAT ?
-            </h2>
-
-            <p>
-                DECOUVRIR NOS BIENS à l’ACHAT ?
-            </p>
-
-        </div>
-
-        <a href="">NOS BIENS EN VENTE</a>
-
-    </section>
-
 <?php
 
     get_template_part( 'templates_parts/bottom_cta' , 'botom_cta' , array(
         'title' => 'Découvrir nos biens à l\'achats ?',
-        'link' => get_permalink(64),
+        'link' => get_site_url().'/contact/',
         'link_text' => 'Nos biens',
     ));
 

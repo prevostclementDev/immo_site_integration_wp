@@ -69,7 +69,7 @@ Template Post Type: page
 
     get_template_part( 'templates_parts/bottom_cta' , 'botom_cta' , array(
         'title' => 'Découvrir nos biens à l\'achats ?',
-        'link' => get_permalink(64),
+        'link' => get_site_url().'/contact/',
         'link_text' => 'Nos biens',
     ));
 

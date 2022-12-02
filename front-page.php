@@ -62,7 +62,7 @@
                     $bien = unserialize(get_post_meta(get_the_ID(),'_info_sell',true));
 
                     ?>
-                    <a href="" class="last_bien">
+                    <a href="<?= get_the_permalink(get_the_ID()) ?>" class="last_bien">
                         <img src="<?= $bien['prestige_1']['img']?>" alt="" class="img_mane_bien">
                         <div class="filter_bg"></div>
 
@@ -94,9 +94,9 @@
     
                         $locs->the_post();
                         $loc = unserialize(get_post_meta(get_the_ID(),'_info_sell',true));
-    
+
                         ?>
-                        <a href="" class="last_bien">
+                        <a href="<?= get_the_permalink(get_the_ID()) ?>" class="last_bien">
                             <img src="<?= $loc['prestige_1']['img']?>" alt="" class="img_mane_bien">
                             <div class="filter_bg"></div>
     

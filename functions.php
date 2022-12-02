@@ -4,6 +4,7 @@
         register_nav_menus(
           array(
             'menu_header' => __( 'Header Menu' ),
+            'footer_menu' => __( 'Footer Menu' ),
            )
          );
     }
@@ -32,6 +33,8 @@
     /* ADD MENU NAV */
     add_action( 'init', 'register_my_menus' );
     /* ADD ADMIN BAR */
-    add_filter( 'show_admin_bar', '__return_true' );
+    add_filter( 'show_admin_bar', '__return_false' );
     /* REGISTER WIDGETS */
     add_action('widgets_init','register_widgets');
+    // add title
+    add_theme_support( 'title-tag' );
