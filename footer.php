@@ -49,7 +49,7 @@
 
             </nav>
 
-            <a href="" class="cta_content">Nous contacter</a>
+            <a href="<?= get_site_url().'/contact/' ?>" class="cta_content">Nous contacter</a>
 
         </section>
 

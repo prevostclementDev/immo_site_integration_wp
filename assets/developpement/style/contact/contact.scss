@@ -27,8 +27,6 @@
 
     }
 
-    .form_contact {
-
         .top_form {
 
             @include centerFlex;
@@ -43,7 +41,7 @@
         
             }
 
-            label {
+            div {
 
                 p {
 
@@ -99,7 +97,7 @@
             @include centerFlex;
             width: 100%;
 
-            label {
+            div {
 
                 display: block;
                 width: 100%;
@@ -167,7 +165,5 @@
             height: 100%;
 
         }
-
-    }
 
 }
