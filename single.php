@@ -63,7 +63,7 @@
 
                     ?>
                     
-                    <a href="" class="bien type_article">
+                    <a href="<?= get_the_permalink(); ?>" class="bien type_article">
 
                         <img src="<?= $image_header['url'] ?>" alt="" class="background_img">
                         <div class="filter_bg"></div>

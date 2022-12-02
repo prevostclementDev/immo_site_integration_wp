@@ -88,18 +88,6 @@ Template Post Type: sell,loc
         </section>
 
     </section>
-
-    <?php 
-    
-    get_template_part( 'templates_parts/bottom_cta' , 'botom_cta' , array(
-        'title' => 'voulez vous reserver une visite ?',
-        'link' => get_permalink(64),
-        'link_text' => 'RESERVER',
-        'id_btn' => 'reservations',
-        'id_bien' => 20,
-    ));
-
-    ?>
     
     <div id="pop_up_reservation">
 
@@ -129,7 +117,6 @@ Template Post Type: sell,loc
     </div>
 
     <script src="<?= get_template_directory_uri();?>/assets/production/js/carousel-min.js"></script>
-    <script src="<?= get_template_directory_uri();?>/assets/production/js/reservation_pop_up-min.js"></script>
 
     <?php
 

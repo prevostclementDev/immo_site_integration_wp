@@ -85,12 +85,6 @@
     
     <?php
 
-    get_template_part( 'templates_parts/bottom_cta' , 'botom_cta' , array(
-        'title' => 'BESOIN DE PLUS D’INFORMATION ?',
-        'link' => get_site_url().'/contact/',
-        'link_text' => 'PRENDRE CONTACT AVEC NOUS',
-    ));
-
     get_footer();
 
 ?>
