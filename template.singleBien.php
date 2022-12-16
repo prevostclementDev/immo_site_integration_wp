@@ -88,21 +88,74 @@ Template Post Type: sell,loc
         </section>
 
     </section>
+
+    <?php
     
-    <div id="pop_up_reservation">
+    if ( isset($_POST['reservation']) ) {
+
+        $display = true;
+        $returnMsg = '';
+
+        $nom = $_POST['nom'];
+        $date = $_POST['date'];
+        $email = $_POST['email'];
+
+        $stringCondition = is_string($nom) && is_string($date) && is_string($email);
+        $LenghtCondition = strlen($nom) > 0 && strlen($date) > 0 && strlen($email) > 0;
+
+        if ( $stringCondition && $LenghtCondition ) {
+
+            $option = unserialize(get_option('reservation'));
+
+            if ( $option == false ) {
+
+                $option = [];
+
+            }
+            
+            $newData = array(
+                'nom' => $nom,
+                'date' => $date,
+                'email' => $email,
+                'post_id' => $this_page_id,
+            );
+
+            if ( !in_array($newData,$option) ) {
+
+                array_push($option, $newData);
+                update_option('reservation', serialize($option));
+                $returnMsg = 'Réservation effectuée, vous aller recevoir un email de confirmation dans les prochains jours';
+
+            } else {
+
+                $display = false;
+
+            }
+
+        } else {
+
+            $returnMsg = 'Entrer des données valides';
+
+        }
+
+    }
+    
+    ?>
+    
+    <div id="pop_up_reservation" class="<?php if( isset($display) && $display ) { echo 'active'; } ?>">
 
         <form action="" method="post">
             
-            <h2>Reservation</h2>
+            <h2>Réservation</h2>
 
             <label for="">
-                <p>Nom :</p>
+                <p>Votre nom :</p>
                 <input type="text" name="nom" id="nom">
             </label>
 
             <label for="">
-                <p>Prénom :</p>
-                <input type="text" name="pnom" id="pnom">
+                <p>Date :</p>
+                <input type="date" name="date" id="email">
             </label>
 
             <label for="">
@@ -110,7 +163,9 @@ Template Post Type: sell,loc
                 <input type="email" name="email" id="email">
             </label>
 
-            <div class="btn"><p class="closePopUp">fermer</p><input type="submit" value="Reserver"></div>
+            <p><?php if( isset($returnMsg) ) { echo $returnMsg; } ?></p>
+
+            <div class="btn"><p class="closePopUp">fermer</p><input type="submit" value="Reserver" name="reservation"></div>
             
         </form>
 
